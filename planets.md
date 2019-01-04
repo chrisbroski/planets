@@ -52,6 +52,8 @@ Melting and boiling points are at 1 Earth atmosphere.
 * Carbon dioxide: −56.6 °C - −78.5 °C
 * Ammonia: −77.73 °C - −33.34 °C
 * "Lava" (O, Si, Al, Fe, Ca, Na, K, Mg, P, Ti): 700 °C
+* Mercury: -38.83 °C - 356.7 °C
+* Bromine: -7 °C - 59 °C
 
 ## Tectonic Activity
 
