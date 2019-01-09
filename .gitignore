@@ -1,4 +1,4 @@
 .DS_STORE
-html/StarGen.csv
+StarGenSource/html/StarGen.csv
 *.o
 StarGenSource/stargen
