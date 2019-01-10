@@ -48,7 +48,7 @@ Creatures that eat herbivores, other carnivores, and even autotrophs (omnivores.
 
 ### Decomposers
 
-Creatures that eat the dead stuff lying around.
+Creatures that eat the dead stuff lying around. Fungus, bacteria, worms, etc. They could also become infectious or parasitic if their food source isn't quite dead.
 
 ### Hybrid
 
@@ -93,3 +93,26 @@ Jellyfish, anemones, and corals are constructed with two different types of tiss
 ### Cambrian
 
 The 3-tissue structure suddenly allows a multitude of morphological possibilities, starting with worms, then with crude shells (molluscs) and full carapace (arthropods.)
+
+Life Cycle
+----------
+
+Patterns of behavior occur due to day/night cycle (inactivity and/or hiding from extreme weather) yearly cycle (migration, hibernation) and the age of the creature.
+
+### Diurnal
+
+Periods of activity and inactivity may coincide with the heat of midday and the cold of the night with the creature seeking its preferred climate and seeking shelter underground or in liquid during harsh cold, heat, or weather.
+
+### Seasonal
+
+If the planet is moderately close to its star and has a tilted axis, creatures may migrate to optimal climate as a yearly cycle, They may also choose to become dormant during harsh times.
+
+### Developmental
+
+Multicellular life starts as a single cell, which divides and differentiates to form the adult creature. The most straightforward path is gradually attaining a reproductive form (then death.) But many life forms that we know pass through significantly different forms, especially those suited to immature/reproductive life styles.
+
+A development life cycle may span 1, 2 or many years.
+
+### Reproductive
+
+If a creature mates and spawns more than once during its life (iteroparus) it may alter its physical form
