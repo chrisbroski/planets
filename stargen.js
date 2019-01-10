@@ -65,7 +65,7 @@ function readPlanetCsv(rsp) {
 }
 
 function starGen(rsp, seed) {
-    var cmd = `./stargen -s${seed} -g -M -e `;
+    var cmd = `stargen -s${seed} -g -M -e `;
     console.log(cmd);
     cp.exec(
         cmd,
