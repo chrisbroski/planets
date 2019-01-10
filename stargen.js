@@ -1,28 +1,17 @@
+/*jshint esversion: 6 */
 var cp = require("child_process");
 var fs = require("fs");
-// var mass = "1.5";
-// var seed = "AB123456";
 
 var http = require('http'),
     port = 3880;
 
-function isValid(url) {
-    // console.log(url.indexOf("-"));
-    if (url.indexOf("-") !== 3) {
-        return false;
-    }
-    return true;
-}
-
 http.createServer(function (req, rsp) {
-    var disk;
-    if (isValid(req.url)) {//NU-4496/0.588
-        disk = req.url.split("/");
-        console.log(disk);
-        starGen(rsp, parseFloat(disk[2]), disk[1]);
+    var seed = parseInt(req.url.slice(1));
+    if (seed && seed < 2000000000) {
+        starGen(rsp, seed);
     } else {
-        rsp.writeHead(200, {'Content-Type': 'text/plain'});
-        rsp.end('URL must look like: "AA-1234/1.234" (2 letters, a dash, 1-4 digits, a slash and floating-point number from 0.500 to 1.500)');
+        rsp.writeHead(400, {'Content-Type': 'text/plain'});
+        rsp.end('URL must look like: "/1234567890" (an integer between 0 and 2,000,000,000)');
     }
 }).listen(port, function () {
     console.log('Server started on port :' + port);
@@ -69,16 +58,17 @@ function readPlanetCsv(rsp) {
         for (ii = 3; ii < len; ii += 1) {
             data.planets.push(planetRow(planetHeader, rows[ii].split(", ")));
         }
-        // console.log(data);
 
         rsp.writeHead(200, {'Content-Type': 'application/json'});
         rsp.end(JSON.stringify(data, null, "    "));
     });
 }
 
-function starGen(rsp, mass, seed) {
+function starGen(rsp, seed) {
+    var cmd = `./stargen -s${seed} -g -M -e `;
+    console.log(cmd);
     cp.exec(
-        './stargen -m' + mass + ' -s' + seed + ' -g -M -e "' + seed + '/' + mass.toPrecision(3) + '"',
+        cmd,
         {cwd: 'StarGenSource'},
         function (error, stdout, stderr) {
             if (!error) {
