@@ -2,6 +2,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1.2, user-scalable=no">
 <title>Planets</title>
+<style>
+pre {
+    background: #eee;
+    padding: 8px;
+    width: 480px;
+    height: 360px;
+    overflow: auto;
+}
+</style>
 
 <body>
 <article>
@@ -10,7 +19,12 @@
 <p><button id="visit">Visit Star</button>
 
 <p>Star: <span id="star"></span>
-
+<p>Mass: <span id="mass"></span>
+<p>Luminosity: <span id="luminosity"></span>
+<p>Age: <span id="age"></span>
+<p>Life: <span id="life"></span>
+<p>Ecosphere: <span id="r_ecosphere"></span>
+<pre></pre>
 </article>
 
 <script>
@@ -24,5 +38,17 @@ document.querySelector("#visit").addEventListener("click", function () {
     // starid += '/' + (Math.random() + 0.5000).toFixed(3);
     var starid = Math.floor(Math.random() * 2000000000);
     document.querySelector("#star").textContent = starid;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:3880/" + starid);
+    xhr.onload = function () {
+        var starData = JSON.parse(this.responseText);
+        document.querySelector("pre").textContent = JSON.stringify(starData, null, "    ");
+        document.querySelector("#mass").textContent = starData.mass;
+        document.querySelector("#luminosity").textContent = starData.luminosity;
+        document.querySelector("#life").textContent = starData.life;
+        document.querySelector("#age").textContent = starData.age;
+        document.querySelector("#r_ecosphere").textContent = starData.r_ecosphere;
+    }
+    xhr.send();
 });
 </script>

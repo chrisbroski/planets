@@ -21,6 +21,10 @@ function scrubQuotes(val) {
     if (!val) {
         return '';
     }
+    val = val.trim();
+    if (!val) {
+        return '';
+    }
     if (val.slice(0, 1) === "'" && val.slice(-1) === "'") {
         val = val.slice(1, val.length - 1);
     } else {
@@ -59,7 +63,7 @@ function readPlanetCsv(rsp) {
             data.planets.push(planetRow(planetHeader, rows[ii].split(", ")));
         }
 
-        rsp.writeHead(200, {'Content-Type': 'application/json'});
+        rsp.writeHead(200, {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"});
         rsp.end(JSON.stringify(data, null, "    "));
     });
 }
