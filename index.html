@@ -20,8 +20,9 @@ function randLetter() {
 document.querySelector("#visit").addEventListener("click", function () {
     // star name - random seed ABC123456
     // single, binary or trinary system (alpha, beta, gamma)
-    var starid = randLetter() + randLetter() + "-" + Math.floor(Math.random() * 10000);
-    starid += '/' + (Math.random() + 0.5000).toFixed(3);
+    // var starid = randLetter() + randLetter() + "-" + Math.floor(Math.random() * 10000);
+    // starid += '/' + (Math.random() + 0.5000).toFixed(3);
+    var starid = Math.floor(Math.random() * 2000000000);
     document.querySelector("#star").textContent = starid;
 });
 </script>
