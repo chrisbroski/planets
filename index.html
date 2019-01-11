@@ -7,29 +7,95 @@ pre {
     background: #eee;
     padding: 8px;
     width: 480px;
-    height: 360px;
+    height: 320px;
     overflow: auto;
+    clear: both;
+}
+
+#star-data, #planets {
+    width: 240px;
+    float: left;
 }
 </style>
 
 <body>
 <article>
-<h1>Visit Planet</h1>
 
 <p><button id="visit">Visit Star</button>
 
-<p>Star: <span id="star"></span>
-<p>Mass: <span id="mass"></span>
-<p>Luminosity: <span id="luminosity"></span>
-<p>Age: <span id="age"></span>
-<p>Life: <span id="life"></span>
-<p>Ecosphere: <span id="r_ecosphere"></span>
+<div id="star-data">
+    <h3 id="star"></span></h3>
+    <p>Mass: <span id="mass"></span>☼
+    <p>Luminosity: <span id="luminosity"></span>☼
+    <p>Age: <span id="age"></span>
+    <p>Ecosphere: <span id="r_ecosphere"></span>AU
+</div>
+
+<div id="planets"></div>
+
 <pre></pre>
+
 </article>
 
+<script src="scientists.js"></script>
+<script src="symbols.js"></script>
 <script>
 function randLetter() {
     return String.fromCharCode(Math.floor(Math.random() * 25) + 65);
+}
+function antiPad(str) {
+    while (str.slice(0, 1) === "0") {
+        str = str.slice(1);
+    }
+    return str;
+}
+function pad(int, len) {
+    var str = int.toString(10);
+    while (str.length < len) {
+        str = "0" + str;
+    }
+    return str;
+}
+function isPlanet(data) {
+    if (data.minor_moons === "") {
+        return false;
+    }
+    return true;
+}
+function formatYears(y, prec) {
+    if (y >= 100000000) {
+        y = (y / 1000000000).toPrecision(prec) + "Ga";
+    } else if (y > 100000) {
+        y = (y / 1000000).toPrecision(prec) + "Ma";
+    } else {
+        y = y.toPrecision(3) + "y";
+    }
+    return y;
+}
+function intToName(seed) {
+    seed = pad(seed, 10);
+    var sciIndex = parseInt(seed.slice(-2), 10);
+    var num1 = antiPad(seed.slice(6, 8));
+    // var symbIndex = parseInt(seed.slice(4, 6), 10);
+    var letterSeparator = parseInt(seed.slice(3, 6), 10);
+    var letterIndex = Math.floor(letterSeparator / 20);
+    var separatorIndex = letterSeparator % 20;
+    var num2 = antiPad(seed.slice(0, 3));
+    console.log(letterSeparator, letterIndex, separatorIndex);
+    return scientists[sciIndex] + " " + num1 + " " + letters[letterIndex] + separators[separatorIndex] + num2;
+}
+function showPlanets(data) {
+    var displayPlanets = document.querySelector("#planets");
+    var planetNumber = 0;
+    displayPlanets.innerHTML = "";
+    data.planets.forEach(function (planet) {
+        var p = document.createElement("p");
+        if (isPlanet(planet)) {
+            planetNumber += 1;
+            p.textContent = planetNumber + ". " + planet.type;
+            displayPlanets.appendChild(p);
+        }
+    });
 }
 document.querySelector("#visit").addEventListener("click", function () {
     // star name - random seed ABC123456
@@ -37,7 +103,7 @@ document.querySelector("#visit").addEventListener("click", function () {
     // var starid = randLetter() + randLetter() + "-" + Math.floor(Math.random() * 10000);
     // starid += '/' + (Math.random() + 0.5000).toFixed(3);
     var starid = Math.floor(Math.random() * 2000000000);
-    document.querySelector("#star").textContent = starid;
+    document.querySelector("#star").textContent = intToName(starid);
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://localhost:3880/" + starid);
     xhr.onload = function () {
@@ -45,9 +111,9 @@ document.querySelector("#visit").addEventListener("click", function () {
         document.querySelector("pre").textContent = JSON.stringify(starData, null, "    ");
         document.querySelector("#mass").textContent = starData.mass;
         document.querySelector("#luminosity").textContent = starData.luminosity;
-        document.querySelector("#life").textContent = starData.life;
-        document.querySelector("#age").textContent = starData.age;
+        document.querySelector("#age").textContent = formatYears(starData.age, 2) + " of " + formatYears(starData.life, 2);
         document.querySelector("#r_ecosphere").textContent = starData.r_ecosphere;
+        showPlanets(starData);
     }
     xhr.send();
 });

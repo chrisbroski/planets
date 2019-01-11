@@ -24,6 +24,8 @@ Chemotrophs will usually have small populations. The amount of available fuel is
 
 An electrical current can be created from a temperature gradient (as in a Peltier heat pump.) A gradient could be made in ambient heat with shade or evaporative cooling.
 
+We create termoelectric devices using semiconductors. Maybe this is common in Silicoid life.
+
 ##### Electrosynthesis
 
 An electron gradient could be created by natural forces. A living creature could conceivably use this for chemical synthesis, though I am not certain how.
@@ -116,3 +118,18 @@ A development life cycle may span 1, 2 or many years.
 ### Reproductive
 
 If a creature mates and spawns more than once during its life (iteroparus) it may alter its physical form
+
+Biochemistry
+------------
+
+### Earth-like
+
+Light + 6CO2 + 6H2O -> 6O2 + C6H12O6
+
+The pigment chlorophyll peak absorbs at wavelengths 465nm and 665nm. Bacteriorhodopsin employs the pigment retinal which absorbs at ~550nm. Photosynthesis color is based on the star color minus the absorption frequencies. This gives chlorophyll a green color and retinal a purple color on Earth. One would expect a similarly uniform color of photosynthesizers on other worlds as the best performing pigments are selected for. However, what that color is could vary widely.
+
+### Liquid Methane
+
+C2H2 + 4H2 + C2H6 -> 4CH4
+
+https://www.astrobio.net/alien-life/the-methane-habitable-zone/

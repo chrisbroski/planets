@@ -62,6 +62,22 @@ function readPlanetCsv(rsp) {
         for (ii = 3; ii < len; ii += 1) {
             data.planets.push(planetRow(planetHeader, rows[ii].split(", ")));
         }
+        // Count moons
+        data.planets.forEach(function (planet, index, all) {
+            var planetNumber = planet.planet_no.slice(planet.planet_no.lastIndexOf(" "));
+            var moons = 0;
+            if (planet.minor_moons !== "") {
+                moons = all.reduce(function (a, p) {
+                    var pNum = p.planet_no.slice(p.planet_no.lastIndexOf(" "));
+                    if (pNum.indexOf(".") > -1 && pNum.slice(0, pNum.indexOf(".")) === planetNumber) {
+                        return a + 1;
+                    } else {
+                        return a;
+                    }
+                }, 0);
+            }
+            data.planets[index].moons = moons;
+        });
 
         rsp.writeHead(200, {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"});
         rsp.end(JSON.stringify(data, null, "    "));
@@ -69,7 +85,7 @@ function readPlanetCsv(rsp) {
 }
 
 function starGen(rsp, seed) {
-    var cmd = `stargen -s${seed} -g -M -e `;
+    var cmd = `stargen -s${seed} -g -M -e`;
     console.log(cmd);
     cp.exec(
         cmd,
