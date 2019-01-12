@@ -24,7 +24,7 @@ Chemotrophs will usually have small populations. The amount of available fuel is
 
 An electrical current can be created from a temperature gradient (as in a Peltier heat pump.) A gradient could be made in ambient heat with shade or evaporative cooling.
 
-We create termoelectric devices using semiconductors. Maybe this is common in Silicoid life.
+We create thermoelectric devices using semiconductors. Maybe this is common in Silicoid life.
 
 ##### Electrosynthesis
 
@@ -122,14 +122,36 @@ If a creature mates and spawns more than once during its life (iteroparus) it ma
 Biochemistry
 ------------
 
-### Earth-like
+https://en.wikipedia.org/wiki/Hypothetical_types_of_biochemistry
+
+### Carbon and Water
 
 Light + 6CO2 + 6H2O -> 6O2 + C6H12O6
 
-The pigment chlorophyll peak absorbs at wavelengths 465nm and 665nm. Bacteriorhodopsin employs the pigment retinal which absorbs at ~550nm. Photosynthesis color is based on the star color minus the absorption frequencies. This gives chlorophyll a green color and retinal a purple color on Earth. One would expect a similarly uniform color of photosynthesizers on other worlds as the best performing pigments are selected for. However, what that color is could vary widely.
+The pigment chlorophyll peak absorbs at wavelengths 465nm and 665nm. Bacteriorhodopsin employs the pigment retinal which absorbs at ~550nm. Photosynthesis color is based on the star color minus the absorption frequencies. This gives chlorophyll a green color and retinal a purple color on Earth. One would expect a similarly uniform color of photosynthesizers on other worlds as the best performing pigments are selected for. However, what that color is could vary widely. (Though blue would be rare.)
+
+As could be used instead of P in DNA.
 
 ### Liquid Methane
 
 C2H2 + 4H2 + C2H6 -> 4CH4
 
 https://www.astrobio.net/alien-life/the-methane-habitable-zone/
+
+Acrylonitrile can be used as a cell membrane instead of phospholipids.
+
+### Silicon
+
+Possible, though most likely less common than C. It could be more suitable in low temperatures (Polysilanols are soluble in liquid N) or low pH. (Sulfuric Acid planets)
+
+### Metal
+
+Apparently metal oxides can for chains and cells. This could be more common on higher temperature planets.
+
+### Carbon and Ammonia
+
+Liquid ammonia at lower temperatures (and/or higher pressures) works much like water. Water can dissolve in ammonia at these lower temperatures too.
+
+### Carbon and Hydrogen Sulfide
+
+H2S (with maybe some HF dissolved) using CO or CO2 as a C source and "breathing" SO could exist on higher pressure worlds.
