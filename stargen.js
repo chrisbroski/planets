@@ -85,7 +85,9 @@ function readPlanetCsv(rsp) {
 }
 
 function starGen(rsp, seed) {
-    var cmd = `stargen -s${seed} -g -M -e`;
+    // These are different if on Windows vs. Mac/Linux
+    var cmd = `./stargen -s${seed} -g -M -e`;
+    // var cmd = `stargen -s${seed} -g -M -e`;
     console.log(cmd);
     cp.exec(
         cmd,
